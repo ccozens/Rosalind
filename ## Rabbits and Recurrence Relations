@@ -1,0 +1,33 @@
+# returns number of rabbits, given n months and k rabbits per generation
+
+def fseque_challenge(n, k):
+    f_seq = [0, 1, 4]
+    for i in range(n-1):
+        if i>=2:
+            # f_seq[i] = number of rabbits in prev gen (n-1)
+            # f_seq[i-1] = number of rabbits in gen before prev (n-2)
+            # k = number of offspring per rabbit pair
+            f_seq.append(((f_seq[i]))+(k*f_seq[i-1]))
+    return f_seq[-1]
+    
+
+# classic Fibonacci, seeing as I wrote it to get brain into gear before above:
+def Fibonacci(start):
+  f_seq = [0, 1, 1]
+  ans = 0
+  for i in range(start):
+    if i>1:
+      f_seq.append(f_seq[i]+f_seq[i-1])
+  return f_seq
+  
+  
+  
+  # alternate solution found on [git](https://github.com/kaniick/Rosalind/blob/master/Bioinformatics%20Stronghold/Rabbits%20and%20Recurrence%20Relations%20(FIB))
+def wabbits(n, k):
+   if n == 0:
+       return 0
+   if n == 1:
+       return 1
+   else:
+       return wabbits(n-1, k) + k*wabbits(n-2, k)
+print(wabbits(5,3))
