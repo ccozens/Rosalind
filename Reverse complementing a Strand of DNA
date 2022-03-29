@@ -1,0 +1,14 @@
+# learning: slicing syntax stepping, so [::-1] starts at end (here, 3') and takes 1 char steps back towards beginning
+
+def revcomp(dna):
+    rev = dna[::-1]
+    return rev.translate(str.maketrans("ATCG","TAGC"))
+    
+
+# clever idea from solutions to get round problem of chaining replace commands and re-replacing letters: change case
+st = "AAAACCCGGT"
+st = st.replace('A', 't').replace('T', 'a').replace('C', 'g').replace('G', 'c').upper()[::-1]
+print(st)
+
+# one-liner I wrote for codewars last year and forgot
+oneliner = dna[::-1].translate(str.maketrans('ACGT', 'TGCA'))
